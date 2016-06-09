@@ -29,7 +29,7 @@ end
 def tarball_sha256sum(edition, version)
   sha256sums = { 'community' => {}, 'enterprise' => {} }
   sha256sums['community']['3.6.3'] = 'fb0fb93e64a8559349645f20821193d1f767672bc06c7f0ad1b1b0a4bc40a7f2'
-  sha256sum = sha256sums[edition][version]
+  sha256sum = sha256sums[edition][version] if sha256sums[edition].key?(version)
   raise "sha256sum is missing for aerospike tarball edition #{edition} version #{version}" unless sha256sum
   sha256sum
 end
@@ -60,7 +60,7 @@ def package_sha256sum(edition, version, os)
   sha256sums['enterprise']['debian7']['3.6.3'] = 'e15f5c5f8d6df56dfd9a4bea56cc0ad748dffffb3bfc82d9bbfd5280901321d3'
   sha256sums['enterprise']['el6']['3.6.3'] = '7916da7af3347e85a6839d4bbf69e58a6dce2a89297c421a5cf4ddc596b7c844'
 
-  sha256sum = sha256sums[edition][os][version]
+  sha256sum = sha256sums[edition][os][version] if sha256sums[edition].key?(os) && sha256sums[edition][os].key?(version)
   raise "sha256sum is missing for aerospike package edition #{edition} version #{version} os #{os}" unless sha256sum
   sha256sum
 end
