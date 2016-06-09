@@ -11,8 +11,8 @@ require 'chef/application'
 def node_resources(node)
   node.set['aerospike']['install_method'] = 'package'
   node.set['aerospike']['checksum_verify'] = false
-  node.set['aerospike']['version'] = '3.8.2.3'
-  node.set['aerospike']['amc']['version'] = '3.6.8.2'
+  node.set['aerospike']['version'] = '3.8.3'
+  node.set['aerospike']['amc']['version'] = '3.6.8'
 end
 
 def stub_resources

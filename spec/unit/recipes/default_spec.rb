@@ -44,15 +44,15 @@ describe 'aerospike-cluster::default' do
       expect(chef_run).to start_service('amc')
     end
 
-    %w( /usr/local/aerospike/aerospike-server-community-3.8.2.3-el7/aerospike-server-community-3.8.2.3-1.el7.x86_64.rpm
-        /usr/local/aerospike/aerospike-server-community-3.8.2.3-el7/aerospike-tools-3.8.2-1.el7.x86_64.rpm
-        aerospike-amc-community-3.6.8.2-el5 ).each do |package|
+    %w( /usr/local/aerospike/aerospike-server-community-3.8.3-el7/aerospike-server-community-3.8.3-1.el7.x86_64.rpm
+        /usr/local/aerospike/aerospike-server-community-3.8.3-el7/aerospike-tools-3.8.3-1.el7.x86_64.rpm
+        aerospike-amc-community-3.6.8-el5 ).each do |package|
       it "Install #{package}" do
         expect(chef_run).to install_package(package)
       end
     end
 
-    %w( /usr/local/aerospike/aerospike-amc-community-3.6.8.2-el5.x86_64.rpm /usr/local/aerospike/aerospike-server-community-3.8.2.3-el7.tgz ).each do |file|
+    %w( /usr/local/aerospike/aerospike-amc-community-3.6.8-el5.x86_64.rpm /usr/local/aerospike/aerospike-server-community-3.8.3-el7.tgz ).each do |file|
       it "Download remote file #{file}" do
         expect(chef_run).to create_remote_file(file)
       end
