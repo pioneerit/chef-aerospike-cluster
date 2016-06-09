@@ -5,8 +5,8 @@ require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 
 desc 'Run all lints'
-task :lint => %w(foodcritic rubocop)
-# task :lint => %w(foodcritic rubocop knife spec)
+# task :lint => %w(foodcritic rubocop)
+task :lint => %w(foodcritic rubocop knife spec)
 task :default => :lint
 
 desc 'Run Rubocop Lint Task'
@@ -31,7 +31,9 @@ end
 
 desc 'Run Chef Spec Test'
 task :spec do
-  RSpec::Core::RakeTask.new(:spec)
+  RSpec::Core::RakeTask.new(:spec) do |config|
+    config.rspec_opts = '--require rspec/pride --format PrideFormatter'
+  end
 end
 
 begin

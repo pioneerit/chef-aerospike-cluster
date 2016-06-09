@@ -73,8 +73,7 @@ suites:
         install_method: 'package'
         version: '3.8.2.3'
         amc:
-          version: '3.6.8'
-          host: ''
+          version: '3.6.8.2'
 
   - name: multicast
     run_list:
@@ -91,4 +90,4 @@ suites:
               mode: multicast
               address: '224.2.2.4'
         amc:
-          version: '3.6.8'
+          version: '3.6.8.2'

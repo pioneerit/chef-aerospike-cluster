@@ -6,6 +6,7 @@ AllCops:
     - Thorfile
     - Gemfile
     - '.kitchen/*'
+    - 'spec/spec_helper.rb'
 AlignParameters:
   Enabled: true
 Encoding:
