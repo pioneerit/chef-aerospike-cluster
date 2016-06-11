@@ -5,10 +5,6 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - gem install bundler
-  - gem install chef -v 12.8.1
-
 bundler_args: --jobs 7 --retry 3
 
 rvm:

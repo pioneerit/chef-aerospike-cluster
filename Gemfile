@@ -21,5 +21,8 @@ group :test do
   gem 'test-kitchen'
   gem 'kitchen-vagrant'
   gem 'kitchen-docker', '~> 2.4.0'
-  # gem 'kitchen-docker', :git => 'https://github.com/peterabbott/kitchen-docker.git'
+  if ENV['CI'] == true
+    gem 'chef', '~> 12.8.1'
+    gem 'listen', '3.0.7'
+  end
 end
