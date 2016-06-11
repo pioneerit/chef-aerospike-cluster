@@ -6,7 +6,8 @@ require 'rspec/core/rake_task'
 
 desc 'Run all lints'
 # task :lint => %w(foodcritic rubocop)
-task :lint => %w(foodcritic rubocop knife spec)
+task :lint => %w(foodcritic rubocop knife)
+task :test => %w(spec kitchen:suite:all)
 task :default => :lint
 
 desc 'Run Rubocop Lint Task'

@@ -67,8 +67,14 @@ suites:
   - name: default
     run_list:
       - recipe[aerospike-cluster::default]
+      - recipe[aerospike-cluster::monitoring]
     attributes:
       aerospike:
+        monitoring:
+          - collectd
+        monitoring_collectd:
+          plugin_dir: '/opt/aerospike-collectd-test'
+          config_dir: '/tmp'
         checksum_verify: false
         install_method: 'package'
         version: '3.8.3'

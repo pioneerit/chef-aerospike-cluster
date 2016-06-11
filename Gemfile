@@ -1,26 +1,25 @@
 source 'https://rubygems.org'
 
-group :lint do
+group :development do
+  gem 'rake'
+  gem 'berkshelf'
   gem 'foodcritic'
   gem 'rubocop'
-  gem 'rake'
+  gem 'guard'
+  gem 'guard-rubocop'
+  gem 'guard-foodcritic'
+  gem 'guard-kitchen'
+  gem 'guard-rspec'
+  if RbConfig::CONFIG['target_os'] =~ /darwin/i
+    gem 'terminal-notifier-guard'
+  end
 end
 
-group :unit do
-  gem 'berkshelf'
+group :test do
   gem 'chefspec'
   gem 'rspec-pride'
-end
-
-group :kitchen_common do
   gem 'test-kitchen'
-end
-
-group :kitchen_vagrant do
   gem 'kitchen-vagrant'
-end
-
-group :kitchen_docker do
- gem 'kitchen-docker', '~> 2.4.0'
+  gem 'kitchen-docker', '~> 2.4.0'
   # gem 'kitchen-docker', :git => 'https://github.com/peterabbott/kitchen-docker.git'
 end

@@ -19,6 +19,9 @@
 
 if node['aerospike'].attribute?('monitoring')
   raise "invalid value for node attribute node['aerospike']['monitoring'], valid are array of any combination of 'collectd'" if (%w(collectd) & node['aerospike']['monitoring']).empty?
+
+  package 'git'
+
   node['aerospike']['monitoring'].each do |method|
     include_recipe "aerospike-cluster::monitoring_#{method}"
   end

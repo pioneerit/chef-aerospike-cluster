@@ -16,6 +16,8 @@ def node_resources(node)
 end
 
 def stub_resources
+  # allow(File).to receive(:exists?).with(anything).and_call_original
+  # allow(File).to receive(:exists?).with('/etc/collectd.d').and_return true
   stub_command('asinfo -v statistics -l | grep cluster_size').and_return('cluster_size=2')
 end
 

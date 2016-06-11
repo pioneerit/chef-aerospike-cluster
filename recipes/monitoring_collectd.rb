@@ -17,16 +17,23 @@
 # limitations under the License.
 #
 
-package 'PyYAML' do
-  action :install
-end
+node.default['aerospike'][recipe_name]['plugin_dir'] = '/opt/aerospike-collectd'
+node.default['aerospike'][recipe_name]['config_dir'] = '/etc/collectd.d'
 
-git '/opt/aerospike-collectd' do
+Chef::Log.warn "Directory from attribute node['aerospike']['#{recipe_name}']['config_dir'], doesn't exist: #{node['aerospike'][recipe_name]['config_dir']}" unless File.exist? node['aerospike'][recipe_name]['config_dir']
+
+package value_for_platform(
+  %w(centos redhat) => { 'default' => 'PyYAML' },
+  %w(ubuntu debian) => { 'default' => 'python-yaml' },
+  'default' => 'PyYAML'
+)
+
+git node['aerospike'][recipe_name]['plugin_dir'] do
   repository 'https://github.com/aerospike/aerospike-collectd.git'
   reference 'master'
   action :export
 end
 
-template '/etc/collectd.d/aerospike.conf' do
+template "#{node['aerospike'][recipe_name]['config_dir']}/aerospike.conf" do
   source 'monitoring/aerospike-collectd.conf.erb'
 end

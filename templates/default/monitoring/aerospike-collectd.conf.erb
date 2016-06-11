@@ -1,3 +1,4 @@
+# This file is managed by Chef.
 # ------------------------------------------------------------------------------
 # Copyright 2012-2016 Aerospike, Inc.
 #
@@ -15,14 +16,14 @@
 # the License.
 # ------------------------------------------------------------------------------
 
-TypesDB "/opt/collectd-plugins/aerospike_types.db"
+TypesDB "<%= node['aerospike']['monitoring_collectd']['plugin_dir'] %>/aerospike_types.db"
 
 <LoadPlugin python>
     Globals true
 </LoadPlugin>
 
 <Plugin python>
-    ModulePath "/opt/collectd-plugins/"
+    ModulePath "<%= node['aerospike']['monitoring_collectd']['plugin_dir'] %>"
     LogTraces true
     Interactive false
     Import "aerospike_plugin"
@@ -48,7 +49,7 @@ TypesDB "/opt/collectd-plugins/aerospike_types.db"
         # location if specified, otherwise attempt to find the file local to
         # plugin.
         # Uncomment the following to specify an different value.
-        #Schema "/opt/collectd-plugins/aerospike_schema.yaml"
+        #Schema "<%= node['aerospike']['monitoring_collectd']['plugin_dir'] %>/aerospike_schema.yaml"
 
     </Module>
 </Plugin>

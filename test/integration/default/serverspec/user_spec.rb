@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'fyber_aerospike::user' do
+describe 'aerospike-cluster::user' do
   describe group('aerospike') do
     it { should exist }
   end
