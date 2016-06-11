@@ -1,17 +1,23 @@
+language: ruby
+cache: bundler
 sudo: required
 
 services:
   - docker
 
+before_install:
+  - gem install bundler
+  - gem chef -v 12.8.1
+
+bundler_args: --jobs 7 --retry 3
+
+rvm:
+  - 2.1
+
 branches:
   only:
     - master
     - /.*-alpha.*/
-
-language: ruby
-
-rvm:
-  - 2.1
 
 script:
   - bundle exec rake test
