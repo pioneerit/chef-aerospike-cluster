@@ -21,7 +21,7 @@ group :test do
   gem 'test-kitchen'
   gem 'kitchen-vagrant'
   gem 'kitchen-docker', '~> 2.4.0'
-  if ENV['CI'] == true
+  if ENV['CI'] == 'true'
     gem 'chef', '~> 12.8.1'
     gem 'listen', '3.0.7'
   end
