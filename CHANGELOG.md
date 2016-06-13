@@ -2,7 +2,16 @@ aerospike-cluster CHANGELOG
 ===========================
 
 This file is used to list changes made in each version of the aerospike-cluster cookbook.
-0.1.8 (07/06/2015)
+0.2.0 (13/06/2016)
+------------------
+- [Oleksandr Sakharchuk](https://github.com/pioneerit):
+  - Create ChefSpec tests
+  - Add monitoring cookbook, with installation of [official](http://www.aerospike.com/docs/operations/monitor) `collectd` plugin.
+  - Raise an error instead of exception when no value for the cheksum
+  - Add guardfile
+  - Update Gemfile and Travis CI build. If you're using Travis, please set `ENV['CI']=true`, for using right gems version for Ruby 2.1
+
+0.1.9 (07/06/2016)
 ------------------
 - [Oleksandr Sakharchuk](https://github.com/pioneerit):
   - Update default attribute configuration
@@ -10,7 +19,7 @@ This file is used to list changes made in each version of the aerospike-cluster 
   - Disable empty `xdr` section in config file, wich caused an error for EE (Enterprise Edition)
   - Update `aerospike-cluster::amc` for installation AMC EE. Closed [#8](https://github.com/vkhatri/chef-aerospike-cluster/issues/8)
 
-0.1.8 (01/06/2015)
+0.1.8 (01/06/2016)
 ------------------
 
 - [Oleksandr Sakharchuk](https://github.com/pioneerit):
@@ -21,14 +30,14 @@ This file is used to list changes made in each version of the aerospike-cluster 
   - Restart `amc` applicatoin if `aerospike` was restarted
   - test update
 
-0.1.7 (31/05/2015)
+0.1.7 (31/05/2016)
 ------------------
 
 - [Oleksandr Sakharchuk](https://github.com/pioneerit):
   - Add test suit case for multicast mode cluster
   - Update `aerospike-cluster::cluster` to ignore `mesh` configuration for `mode: multicast` which cause an error
 
-0.1.6 (26/05/2015)
+0.1.6 (26/05/2016)
 ------------------
 
 - [Oleksandr Sakharchuk](https://github.com/pioneerit):

@@ -40,7 +40,7 @@ Cookbook supports both Aerospike `Community` and `Enterprise` edition.
 
 ## Supported Aerospike Version
 
-This cookbook was tested for Aerospike v3.8.2.3. But default is 3.6.3
+This cookbook was tested for Aerospike v3.8.3. But default is 3.6.3
 
 
 ## TODO
@@ -71,6 +71,8 @@ This cookbook was tested for Aerospike v3.8.2.3. But default is 3.6.3
 - `aerospike-cluster::cluster` - uses chef search to derive value for attribute `default['aerospike']['config']['network']['heartbeat']['mesh-seed-address-port']`
 
 - `aerospike-cluster::amc` - install and configure aerospike management console
+
+- `aerospike-cluster::monitoring` - use it if you want to install and configure [integrations from Aerospike](http://www.aerospike.com/docs/operations/monitor)
 
 
 ## Advanced Attributes
@@ -272,6 +274,15 @@ This cookbook was tested for Aerospike v3.8.2.3. But default is 3.6.3
 
 * `default['aerospike']['amc']['gunicorn_config']['worker_class']` (default: `eventlet`): amc gunicorn configuration parameter
 
+## Monitoring Attributes
+
+* `default['aerospike']['monitoring']` (default: nil): set to and Array, each element will be included as `monitoring_#{element}`
+
+## monitoring_collectd Attributes
+
+* `default['aerospike']['monitoring_collectd']['plugin_dir']` (default: '/opt/aerospike-collectd'): path for the plugin git export
+
+* `default['aerospike']['monitoring_collectd']['['config_dir']']` (default: '/etc/collectd.d'): path for collectd configuration
 
 
 ## Contributing
@@ -280,7 +291,7 @@ This cookbook was tested for Aerospike v3.8.2.3. But default is 3.6.3
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
 4. Write tests for your change (if applicable)
-5. Run the tests (`rake & rake knife`), ensuring they all pass
+5. Run the tests (`rake test`), ensuring they all pass
 6. Write new resource/attribute description to `README.md`
 7. Write description about changes to PR
 8. Submit a Pull Request using Github

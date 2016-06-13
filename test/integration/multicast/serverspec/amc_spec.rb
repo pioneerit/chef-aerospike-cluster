@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'fyber_aerospike::default' do
+describe 'aerospike-cluster::default' do
   describe service('amc') do
     it { should be_enabled }
   end
