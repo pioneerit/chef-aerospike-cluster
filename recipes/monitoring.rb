@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-if node['aerospike'].attribute?('monitoring')
+if node['aerospike'].attribute?('monitoring') && !node['aerospike']['monitoring'].empty?
   raise "invalid value for node attribute node['aerospike']['monitoring'], valid are array of any combination of 'collectd'" if (%w(collectd) & node['aerospike']['monitoring']).empty?
 
   package 'git'
